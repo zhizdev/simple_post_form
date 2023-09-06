@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<link rel="stylesheet" href="{{ url_for('static',filename='style.css') }}">
+<link rel="stylesheet" href="{{ url_for('static',filename='bootstrap.min.css') }}">
+<script src="{{ url_for('static',filename='bootstrap.bundle.min.js') }}"></script>
+
+<title>Recommendation System</title>
+<nav class="navbar navbar-light bg-white">
+    <div class="container">
+        <a class="navbar-brand" href="#/">
+            <img src="{{ url_for('static',filename='logo.jpg') }}" height="45" alt="" style="margin-right:20px">Custom Recommendation System
+        </a>
+        <form class="form-inline">
+            <a class="navbar-brand" href="/">About</a>
+            <a class="navbar-brand" href="/try/">Try</a>
+        </form>
+    </div>
+</nav>
+
+<div class="container" style='height:600px'>
+    <div class="row d-flex justify-content-center h-100" style="margin-top:2em;">
+
+        <div class="col-md-12 col-lg-4 align-self-center">
+            <h3>Enter Your Favorite Songs </h3>
+            <form action="/try/" method="post" enctype="multipart/form-data">
+                <input style="width:100%" type="text" name="songs" placeholder="Love Story, Call Me Maybe"/><br><br>
+                <input type="submit" value="Get Recommendations"/>
+            </form>
+
+
+            <p>{{suggestions_text}}</p>
+            
+        </div>
+
+    </div>
+
+</div>
+
+<script>
+// Stop the form resubmission on page refresh
+
+if ( window.history.replaceState ) {
+
+window.history.replaceState( null, null, window.location.href );
+
+}
+</script>
